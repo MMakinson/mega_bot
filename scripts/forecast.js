@@ -1,16 +1,27 @@
 // npm run dev is needed to get bot running!!!
 
 module.exports = function (bot) {
+    let today = new Date();
+        
+    let tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate()+1);
+    tomorrow.toLocaleDateString();
+        
+    let dat = new Date(today);
+    dat.setDate(today.getDate()+2);
+    dat.toLocaleDateString();
+
     bot.respond(/wind today (.*)/i, function(msg){
         let time
         time = msg.match[1].toLowerCase().replace(/\s+/g, '');
         if (time == '10am') {
-            // day = today.toLocaleDateString()
-            // create date here with time as 10am
-            return msg.send(`today's wind forecast for lake union starting at ${time} is: 10 knots from SE`)
+            today = today.setHours(10,0,0,0);
+            let todayAm = new Date(today)
+            return msg.send(`today's wind forecast for lake union starting ${todayAm} is: 10 knots from SE`)
         } else if (time == '1pm') {
-            // create date here with time as 1pm
-            return msg.send(`today's wind forecast for lake union starting at ${time} is: 2 knots from N`)
+            today = today.setHours(13,0,0,0);
+            todayPm = new Date(today)
+            return msg.send(`today's wind forecast for lake union starting ${todayPm} is: 2 knots from N`)
         } else {
             return msg.send('Arrrrrrrrr! Try again, matey! 10am or 1pm today? Thar be the options.')
         }   
@@ -20,14 +31,13 @@ module.exports = function (bot) {
         let tomTime
         tomTime = msg.match[1].toLowerCase().replace(/\s+/g, '');
         if (tomTime == '10am') {
-            // day = today.toLocaleDateString()
-    
-            // create date here with time as 10am
-            return msg.send(`tomorrow's wind forecast for lake union starting at ${tomTime} is: 7 knots NW`)
+            tomorrow = tomorrow.setHours(10,0,0,0);
+            let tomAm = new Date(tomorrow);
+            return msg.send(`tomorrow's wind forecast for lake union starting ${tomAm} is: 7 knots NW`)
         } else if (tomTime == '1pm') {
-            // create date here with time as 1pm
-            
-            return msg.send(`tomorrow's wind forecast for lake union starting at ${tomTime} is: 5 knots SW`)
+            tomorrow = tomorrow.setHours(13,0,0,0);
+            let tomPm = new Date(tomorrow);
+            return msg.send(`tomorrow's wind forecast for lake union starting ${tomPm} is: 5 knots SW`)
         } else {
             return msg.send('Arrrrrrrrr! Try again, matey! 10am or 1pm tomorrow? Thar be the options.')
         }   
@@ -37,35 +47,16 @@ module.exports = function (bot) {
         let timeDAT
         timeDAT = msg.match[1].toLowerCase().replace(/\s+/g, '');
         if (timeDAT == '10am') {
-            // day = today.toLocaleDateString()
-            // create date here with time as 10am
-            return msg.send(`The wind forecast for lake union the day after tomorrow starting at ${timeDAT} is: 15 knots NW`)
+            dat = dat.setHours(10,0,0,0);
+            let datAm = new Date(dat);
+            return msg.send(`The wind forecast for lake union the day after tomorrow starting ${datAm} is: 15 knots NW`)
         } else if (timeDAT == '1pm') {
-            // create date here with time as 1pm
-            return msg.send(`The wind forecast for lake union the day after tomorrow starting at ${timeDAT} is: 25 knots NE`)
+            dat = dat.setHours(13,0,0,0);
+            let datPm = new Date(dat);
+            return msg.send(`The wind forecast for lake union the day after tomorrow starting ${datPm} is: 25 knots NE`)
         } else {
             return msg.send('Arrrrrrrrr! Try again, matey! 10am or 1pm day after tomorrow? Thar be the options.')
         }   
     })
 }
 
-// if yes
-        // wind for today 10am-1pm;
-        // wind for today 1pm- 4pm;
-
-        // wind for today +1 day 10am-1pm;
-        // wind for today + 1 day 1pm- 4pm;
-
-        // wind for today +2 days 10am-1pm;
-        // wind for today + 2 days 1pm- 4pm;
-        
-        // if no, give the date
-
-
-        // if (bot.hear(/yes/, function(res) {
-    //     return res.send('test')
-    // })    
-
-    // bot.hear(/What day is today?/i, function(res) {
-    //     return res.send(new Date().toDateString())
-    // })
