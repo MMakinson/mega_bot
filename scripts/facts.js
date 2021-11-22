@@ -1,6 +1,7 @@
-// import uniqueRandomArray from 'unique-random-array';
+let sailingFacts = ['Titanic was the first ocean liner to have a swimming pool and a gym', 'The Americas Cup, a race for sailboats, was originally awarded in 1851, making it the oldest sporting trophy in the world', 'The youngest person to circumnavigate the world was 16-year old Laura Dekker', 'the ideal wind speed for sailing is between eight and twelve knots', 'The average salinity of oceans is 3.5%'];
 
-const sailingFacts = ['Titanic was the first ocean liner to have a swimming pool and a gym', 'The Americas Cup, a race for sailboats, was originally awarded in 1851, making it the oldest sporting trophy in the world', 'The youngest person to circumnavigate the world was 16-year old Laura Dekker', 'the ideal wind speed for sailing is between eight and twelve knots', 'The average salinity of oceans is 3.5%'];
+
+let randomFact = sailingFacts[Math.floor(Math.random()*sailingFacts.length)];
 
 module.exports = function (bot) {
     bot.hear(/(.*) sailing fact/i, function(res){
@@ -16,11 +17,11 @@ module.exports = function (bot) {
             case 'sport':
                 return res.reply(`${sailingFacts[1]}`)
                 break
-            // case 'random':
-            //     return msg.reply(`${sailingFacts[0]}`)
-            //     break
+            case 'random':
+                return res.reply(`what is ${randomFact}`)
+                break
             default:
-                return res.reply(`I don't have a favorite ${sailingFacts}. What's yours?`)
+                return res.reply(`You didn't choose one of the options! Have a random fact: ${randomFact}`)
         }
         
     })
@@ -30,13 +31,3 @@ module.exports = function (bot) {
 
 
 
-// Large watercraft are generally called ships. 
-
-// Smaller watercraft are generally called boats. 
-
-// 
-
-// 
-
-// 
-// 
