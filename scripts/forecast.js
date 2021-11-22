@@ -1,4 +1,6 @@
 // npm run dev is needed to get bot running!!!
+// API key: b726e586f2bc4a5dc52dd85793e107ce
+// 
 
 module.exports = function (bot) {
     let today = new Date();
